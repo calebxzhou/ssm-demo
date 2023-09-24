@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'calebxzhou.ssm'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.9.2'
+}
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+    // https://mvnrepository.com/artifact/org.springframework/spring-core
+    implementation 'org.springframework:spring-core:5.3.30'
+// https://mvnrepository.com/artifact/org.springframework/spring-web
+    implementation 'org.springframework:spring-web:5.3.30'
+// https://mvnrepository.com/artifact/org.springframework/spring-webmvc
+    implementation 'org.springframework:spring-webmvc:5.3.30'
+// https://mvnrepository.com/artifact/ch.qos.logback/logback-core
+    implementation 'ch.qos.logback:logback-core:1.4.11'
+
+
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}
